@@ -22,9 +22,12 @@ const Header: FC = () => {
 	return (
 		<>
 			{/* 画面サイズmd以上のheader ... */}
-			<header className="hidden md:flex fixed  z-50 h-[80px] w-full justify-between  items-center p-4 border-b border-b-gray-200 shadow-b-md bg-white top-0 left-0">
+			<header className="hidden md:flex fixed  z-50 h-[80px] w-full justify-between  items-cente p-4 border-b border-b-gray-200 shadow-b-md bg-white top-0 left-0">
 				{/* logo */}
-				<div className="flex items-center justify-center pr-8 cursor-pointer hover:opacity-80">
+				<div
+					className="flex items-center justify-center pr-8 cursor-pointer hover:opacity-80"
+					onClick={() => router.push("/")}
+				>
 					<NextImage src={Logo} alt="logo" width="70px" height="70px" />
 					<div className="ml-4 text-2xl font-semibold ">放射線部</div>
 				</div>
