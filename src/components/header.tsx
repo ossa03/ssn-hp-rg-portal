@@ -13,7 +13,8 @@ const navMenuList = [
 	{ label: "Home", href: "/", Icon: HiOutlineHome, area_label: "home" },
 	{ label: "時間外登録", href: "/overtimeForm", Icon: HiOutlineClock, area_label: "overtime" },
 	{ label: "マニュアル", href: "/manualList", Icon: HiOutlineDocumentText, area_label: "manual" },
-	{ label: "動画", href: "/playlist", Icon: HiOutlinePlay, area_label: "movie" },
+	{ label: "動画ECG", href: "/playlist/ecg", Icon: HiOutlinePlay, area_label: "movie_ecg" },
+	{ label: "動画ABL", href: "/playlist/abl", Icon: HiOutlinePlay, area_label: "movie_abl" },
 ]
 
 const Header: FC = () => {

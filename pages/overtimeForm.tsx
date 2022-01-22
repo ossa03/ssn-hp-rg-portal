@@ -32,42 +32,52 @@ const OvertimeForm = () => {
 		modality: "AG",
 		start: "17:30",
 		end: str_now,
-		description: "血栓回収",
+		description: "",
 	}
 
 	const {
 		handleSubmit,
 		register,
-		formState: { errors, isSubmitting, isSubmitted, isSubmitSuccessful },
 		reset,
-	} = useForm<FormValues>({ defaultValues: defaultFormValues })
+		formState: { errors, isSubmitted, isSubmitSuccessful },
+	} = useForm<FormValues>({
+		defaultValues: defaultFormValues,
+	})
 
 	const onSubmit = (postData: FormValues) => {
 		// TODO 確認を表示 → OKなら処理続行．NOならキャンセル.としたいが、キャンセルを押してもconfirmが作動してOK押したら送信されてしまう．
 		if (window.confirm("この内容で送信してよろしいですか？")) {
-			setIsSubmit(true)
+			//TODO 送信キャンセルしてもデータが送信される件 一旦コメントアウト
+			//// setIsSubmit(true)
 			console.log(postData)
 
 			// POST to '/api/add_overtime
-			axios.post("/api/add_overtime", { data: postData }).then((res) => {
-				console.log(res.status)
-				console.log(res.statusText)
-				if (res.statusText == "ok") {
-					setIsSubmit(true)
-					router.push("/overtimeForm")
-					reset(defaultFormValues)
-				} else {
-					setIsSubmit(false)
-				}
-			})
+			axios.post("/api/add_overtime", { data: postData })
+			//TODO 送信キャンセルしてもデータが送信される件 一旦コメントアウト
+			//// .then((res) => {
+			//// console.log(res.status)
+			//// console.log(res.statusText)
+			//// if (res.statusText == "ok") {
+			//// 	setIsSubmit(true)
+			//// 	router.push("/overtimeForm")
+			//// 	reset(defaultFormValues)
+			//// } else {
+			//// 	setIsSubmit(false)
+			//// }
+			//// })
+
+			setIsSubmit(true)
+
+			console.log("送信したよ")
+			console.log(isSubmitted)
 		} else {
 			console.log("送信をキャンセルしました")
-			console.log(isSubmit)
+			console.log(isSubmitted)
+			setIsSubmit(false)
 		}
 	}
 
-	const onReset = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
-		e.preventDefault()
+	const onReset = () => {
 		reset(defaultFormValues)
 		console.log("resetしたよ")
 	}
@@ -81,7 +91,8 @@ const OvertimeForm = () => {
 					"text-base px-4 py-2 rounded-md border-2 outline-none hover:indigo-blue-700 text-gray-700 hover:text-indigo-700"
 				}
 				onClick={() => {
-					setIsSubmit(false)
+					//TODO 送信キャンセルしてもデータが送信される件 一旦コメントアウト
+					//// setIsSubmit(false)
 					router.push("/overtimeForm")
 					reset(defaultFormValues)
 				}}
@@ -176,7 +187,7 @@ const OvertimeForm = () => {
 							</button>
 							<button
 								className="w-full p-2 bg-pink-500 rounded-full hover:bg-pink-600 active:bg-pink-400"
-								onClick={() => reset(defaultFormValues)}
+								onClick={onReset}
 							>
 								リセット
 							</button>
@@ -193,7 +204,7 @@ const OvertimeForm = () => {
 				<title>時間外登録フォーム</title>
 			</Head>
 
-			{isSubmit ? SubmittedComponent : FormComponent}
+			{isSubmitted && isSubmit ? SubmittedComponent : FormComponent}
 		</>
 	)
 }

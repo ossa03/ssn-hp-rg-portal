@@ -18,8 +18,8 @@ const PlaylistItem: FC<Props> = (props) => {
 	return (
 		<>
 			<NextLink href={YOUTUBE_PLAY_URL}>
-				<a>
-					<div className="items-stretch justify-between p-2 text-white bg-gray-800 border border-gray-600 rounded w-72 hover:opacity-90 ">
+				<a className="px-4 py-4" target="_blank">
+					<div className="items-stretch justify-between p-4 text-white bg-gray-800 border border-gray-600 rounded w-72 hover:opacity-90 ">
 						<h3 className="w-full mb-4">{title}</h3>
 						<div className="overflow-hidden rounded">
 							<NextImage
