@@ -105,7 +105,7 @@ const OvertimeForm = () => {
 	// フォームコンポーネント
 	const FormComponent: JSX.Element = (
 		<form
-			className="flex flex-col h-max  md:w-[560px]  min-w-[380px] my-8 mx-auto border rounded-sm shadow-sm"
+			className="flex flex-col h-max  md:w-[560px]  min-w-[370px] my-8 mx-auto border rounded-sm shadow-sm"
 			onSubmit={handleSubmit(onSubmit)}
 		>
 			<div className="flex flex-col w-full ">
