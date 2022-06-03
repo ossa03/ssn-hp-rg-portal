@@ -9,12 +9,12 @@ type Props = {
 	createdAt: string // or Date or GoogleAppsScript.Base.Date
 	fileName: string
 	fileUrl: string
-	id: string
+	// id: string
 	thumbnail?: GoogleAppsScript.Base.Blob // or Blob
 	updatedAt: string // or Date or GoogleAppsScript.Base.Date
 }
 
-const ManualListItem = ({ fileName = "マニュアルタイトル", fileUrl = "#", createdAt, updatedAt }) => {
+const ManualListItem: FC<Props> = ({ fileName = "マニュアルタイトル", fileUrl = "#", createdAt, updatedAt }) => {
 	return (
 		<>
 			<NextLink href={fileUrl}>
