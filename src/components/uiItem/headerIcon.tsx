@@ -1,17 +1,26 @@
 import { FC } from "react"
 import { IconType } from "react-icons"
+import Tooltip from "./tooltip"
 
 type Props = {
 	title: string
 	Icon: IconType
+	rest?: string
 }
 
-const HeaderIcon: FC<Props> = ({ Icon, title }) => {
+const HeaderIcon: FC<Props> = ({ Icon, title, ...rest }) => {
 	return (
 		<>
-			<div className="flex items-center justify-center px-4 py-2 space-x-1 transition-all rounded-full cursor-pointer hover:bg-gray-100 group ">
-				<Icon className="w-5 h-5 transition-all group-active:opacity-60 " />
-				<div className="text-lg transition-all group-active:opacity-60 ">{title}</div>
+			<Tooltip description={title} />
+			<div
+				className={`flex-col md:flex items-center justify-center px-4 py-2 md:space-x-1 transition-all rounded-full cursor-pointer hover:bg-gray-100 group`}
+			>
+				<Icon className="w-6 h-6 md:w-6 md:h-6 transition-all group-active:opacity-60 items-center justify-center " />
+				<div
+					className={` hidden md:block text-xs md:text-xl transition-all group-active:opacity-60 items-center justify-center `}
+				>
+					{title}
+				</div>
 			</div>
 		</>
 	)

@@ -39,17 +39,40 @@ const Header: FC = () => {
 					{navMenuList.map((nav) => (
 						<NextLink href={nav.href} key={nav.label}>
 							<a>
-								<HeaderIcon Icon={nav.Icon} title={nav.label} />
+								<HeaderIcon Icon={nav.Icon} title={nav.label} text-lg="text-lg" />
 							</a>
 						</NextLink>
 					))}
 				</div>
 			</header>
+
 			{/* ... 画面サイズmd以上のheader */}
 
 			{/* TODO mobile用のnavigationを作成する
 							 headerはハンバーガーメニューとlogoにする
 							 メニューを押したらDrawerで表示する */}
+			<header className=" flex w-full justify-between  items-center p-2 border-b border-b-gray-200 shadow-b-md bg-white">
+				{/* logo */}
+				<div
+					className="flex text-sm items-start w-[60px] h-60px] justify-center pr-4 cursor-pointer hover:opacity-80"
+					onClick={() => router.push("/")}
+				>
+					<NextImage src={Logo} alt="logo" width="50px" height="50px" />
+					{/* <div className="ml-4 text-2xl font-semibold ">放射線部</div> */}
+				</div>
+
+				{/* navigation */}
+				<div className="flex justify-around flex-1 space-x-1 ">
+					{/* navMenu */}
+					{navMenuList.map((nav) => (
+						<NextLink href={nav.href} key={nav.label}>
+							<a>
+								<HeaderIcon Icon={nav.Icon} title={nav.label} text-md={"text-md"} flex-col="flex-col" />
+							</a>
+						</NextLink>
+					))}
+				</div>
+			</header>
 		</>
 	)
 }
