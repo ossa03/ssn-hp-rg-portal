@@ -39,15 +39,20 @@ const ManualList: FC = ({ data }: any) => {
 	// debug
 	console.log("DATA:::::::::::::\n", data)
 
-	const ref = useRef()
+	const ref = useRef<HTMLInputElement>(null)
 	const [searchQuery, setSearchQuery] = useState(data)
 
 	const handleSearch = () => {
-		const value = ref.current.value
+		// if (ref.current === undefined) {
+		// 	setSearchQuery(data)
+		// }
+		const value = ref.current?.value
 		console.log(value)
 
 		// フィルタリング機能
-		setSearchQuery(data.filter((item: Data) => item.fileName.toLowerCase().includes(value)))
+		if (typeof value === "string") {
+			setSearchQuery(data.filter((item: Data) => item.fileName.toLowerCase().includes(value)))
+		}
 		// debug
 		console.log(searchQuery)
 		console.log(data.length)
