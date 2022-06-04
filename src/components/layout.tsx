@@ -5,7 +5,7 @@ const Layout: FC = ({ children }) => {
 	return (
 		<>
 			<Header />
-			<div className="min-h-screen bg-blue mx-auto pt-4 container md:mt-[80px] overflow-hidden">
+			<div className="min-h-screen bg-blue mx-auto py-4 container mt-[80px] overflow-hidden">
 				<main>{children}</main>
 			</div>
 		</>

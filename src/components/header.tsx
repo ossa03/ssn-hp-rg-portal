@@ -23,7 +23,7 @@ const Header: FC = () => {
 	return (
 		<>
 			{/* 画面サイズmd以上のheader ... */}
-			<header className="hidden md:flex fixed  z-50 h-[80px] w-full justify-between  items-cente p-4 border-b border-b-gray-200 shadow-b-md bg-white top-0 left-0">
+			<header className="hidden lg:flex fixed  z-50 h-[80px] w-full justify-between items-center p-4 border-b border-b-gray-200 shadow-b-md bg-white top-0 left-0">
 				{/* logo */}
 				<div
 					className="flex items-center justify-center pr-8 cursor-pointer hover:opacity-80"
@@ -39,7 +39,7 @@ const Header: FC = () => {
 					{navMenuList.map((nav) => (
 						<NextLink href={nav.href} key={nav.label}>
 							<a>
-								<HeaderIcon Icon={nav.Icon} title={nav.label} text-lg="text-lg" />
+								<HeaderIcon Icon={nav.Icon} title={nav.label} />
 							</a>
 						</NextLink>
 					))}
@@ -51,7 +51,7 @@ const Header: FC = () => {
 			{/* TODO mobile用のnavigationを作成する
 							 headerはハンバーガーメニューとlogoにする
 							 メニューを押したらDrawerで表示する */}
-			<header className=" flex w-full justify-between  items-center p-2 border-b border-b-gray-200 shadow-b-md bg-white">
+			<header className=" fixed  z-50 top-0 left-0 h-[80px] flex items-center justify-between w-full p-2 bg-white border-b  lg:hidden border-b-gray-200 shadow-b-md">
 				{/* logo */}
 				<div
 					className="flex text-sm items-start w-[60px] h-60px] justify-center pr-4 cursor-pointer hover:opacity-80"
@@ -67,7 +67,7 @@ const Header: FC = () => {
 					{navMenuList.map((nav) => (
 						<NextLink href={nav.href} key={nav.label}>
 							<a>
-								<HeaderIcon Icon={nav.Icon} title={nav.label} text-md={"text-md"} flex-col="flex-col" />
+								<HeaderIcon Icon={nav.Icon} title={nav.label} />
 							</a>
 						</NextLink>
 					))}

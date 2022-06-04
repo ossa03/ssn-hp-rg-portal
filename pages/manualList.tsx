@@ -65,18 +65,18 @@ const ManualList: FC = ({ data }: any) => {
 
 			<div>マニュアル一覧</div>
 
-			<div className="flex justify-center w-full items-center">
-				<label htmlFor="search" className="  text-gray-800 text-xl ">
-					検索:
+			<div className="flex items-center justify-center w-full">
+				<label htmlFor="search" className="text-xl text-gray-800 ">
+					検索 :
 				</label>
 				<input
 					id="search"
 					type="text"
-					className="text-gray-800 text-xl px-4 py-2 tracking-wide border border-gray-400 justify-end rounded w-1/2 ml-4 my-4"
+					className="justify-end w-1/2 px-4 py-2 my-4 ml-4 text-xl tracking-wide text-gray-800 border border-gray-400 rounded"
 					onChange={() => handleSearch()}
 					ref={inputRef}
 				/>
-				<div className="text-indigo-500 opacity-90 text-xl ml-4 p-2 rounded justify-end">
+				<div className="justify-end p-2 ml-4 text-xl text-indigo-500 rounded opacity-90">
 					{searchQuery.length} / {data.length}
 				</div>
 			</div>

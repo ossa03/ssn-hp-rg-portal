@@ -105,7 +105,7 @@ const OvertimeForm = () => {
 	// フォームコンポーネント
 	const FormComponent: JSX.Element = (
 		<form
-			className="flex flex-col h-max  md:w-[560px]  min-w-[370px] my-8 mx-auto border rounded-sm shadow-sm"
+			className="flex flex-col h-max  lg:w-[560px]  min-w-[370px] my-8 mx-auto border rounded-sm shadow-sm"
 			onSubmit={handleSubmit(onSubmit)}
 		>
 			<div className="flex flex-col w-full ">
@@ -181,12 +181,15 @@ const OvertimeForm = () => {
 								/>
 							</label>
 						</div>
-						<div className="flex w-full px-12 space-x-6 text-slate-50">
-							<button className="w-full p-2 rounded-full bg-sky-500 hover:bg-sky-600 active:bg-sky-400" type="submit">
+						<div className="flex w-full px-6 space-x-2 lg:px-12 lg:space-x-6 text-slate-50">
+							<button
+								className="w-full p-2 text-sm rounded-full lg:text-lg bg-sky-500 hover:bg-sky-600 active:bg-sky-400"
+								type="submit"
+							>
 								送 信
 							</button>
 							<button
-								className="w-full p-2 bg-pink-500 rounded-full hover:bg-pink-600 active:bg-pink-400"
+								className="w-full p-2 text-sm bg-pink-500 rounded-full lg:text-lg hover:bg-pink-600 active:bg-pink-400"
 								onClick={onReset}
 							>
 								リセット
