@@ -40,16 +40,16 @@ const ManualList: FC = ({ data }: any) => {
 	// debug
 	console.log("DATA:::::::::::::\n", data)
 
-	const ref = useRef<HTMLInputElement>(null)
+	const inputRef = useRef<HTMLInputElement>(null)
 	const [searchQuery, setSearchQuery] = useState(data)
 
 	const handleSearch = () => {
-		const value = ref.current?.value
+		const value = inputRef.current?.value
 		console.log(value)
 
 		// フィルタリング機能
 		if (typeof value === "string") {
-			setSearchQuery(data.filter((item: Data) => item.fileName.toLowerCase().includes(value)))
+			setSearchQuery(data.filter((item: Data) => item.fileName.toLowerCase().trim().includes(value)))
 		}
 		// debug
 		console.log(searchQuery)
@@ -74,7 +74,7 @@ const ManualList: FC = ({ data }: any) => {
 					type="text"
 					className="text-gray-800 text-xl px-4 py-2 tracking-wide border border-gray-400 justify-end rounded w-1/2 ml-4 my-4"
 					onChange={() => handleSearch()}
-					ref={ref}
+					ref={inputRef}
 				/>
 				<div className="text-indigo-500 opacity-90 text-xl ml-4 p-2 rounded justify-end">
 					{searchQuery.length} / {data.length}
@@ -84,12 +84,14 @@ const ManualList: FC = ({ data }: any) => {
 			<div className="flex flex-wrap items-start justify-start min-h-screen">
 				{searchQuery.map((item: Data) => {
 					const { id, createdAt, updatedAt, fileName, fileUrl } = item
+					// fileUrlは編集モードになっているので、previewモードに変更する．
+					const previewFileUrl = fileUrl.replace("edit", "preview")
 					return (
 						<ManualListItem
 							key={id}
 							createdAt={createdAt}
 							fileName={fileName}
-							fileUrl={fileUrl}
+							fileUrl={previewFileUrl}
 							updatedAt={updatedAt}
 						/>
 					)
