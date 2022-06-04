@@ -21,6 +21,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 	return {
 		props: { data: data.data },
+		revalidate: 60 * 60 * 60 * 4, // 4時間ごとにデータフェッチ
 	}
 }
 
@@ -43,9 +44,6 @@ const ManualList: FC = ({ data }: any) => {
 	const [searchQuery, setSearchQuery] = useState(data)
 
 	const handleSearch = () => {
-		// if (ref.current === undefined) {
-		// 	setSearchQuery(data)
-		// }
 		const value = ref.current?.value
 		console.log(value)
 
@@ -86,7 +84,6 @@ const ManualList: FC = ({ data }: any) => {
 			<div className="flex flex-wrap items-start justify-start min-h-screen">
 				{searchQuery.map((item: Data) => {
 					const { id, createdAt, updatedAt, fileName, fileUrl } = item
-
 					return (
 						<ManualListItem
 							key={id}
