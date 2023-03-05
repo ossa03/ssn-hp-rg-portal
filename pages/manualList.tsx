@@ -3,8 +3,9 @@ import { GetStaticProps } from "next"
 import Head from "next/head"
 import { FC, useRef, useState } from "react"
 import ManualListItem from "../src/components/manualListItem"
+import Title from "../src/components/uiItem/title"
 
-// fetch
+// fetch SSG
 export const getStaticProps: GetStaticProps = async (context) => {
 	const GOOGLE_DRIVE_API_DEMO =
 		"https://script.google.com/macros/s/AKfycbzD5pz5Vd-355SR7-6toSASjiP-uOtxampW-dze_pS3XxHjODGSVYM1cFzoxFj4I15PbA/exec"
@@ -21,7 +22,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 	return {
 		props: { data: data.data },
-		revalidate: 60 * 60 * 4, // 4時間ごとにデータフェッチ
+		revalidate: 60 * 60 * 4, // 4時間ごとにビルド
 	}
 }
 
@@ -63,7 +64,7 @@ const ManualList: FC = ({ data }: any) => {
 				<title>マニュアル一覧</title>
 			</Head>
 
-			<div>マニュアル一覧</div>
+			<Title title="放射線科 マニュアル" />
 
 			<div className="flex items-center justify-center w-full">
 				<label htmlFor="search" className="text-xl text-gray-800 ">
