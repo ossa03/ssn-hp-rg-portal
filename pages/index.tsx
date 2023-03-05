@@ -1,6 +1,9 @@
 import Head from "next/head"
+import { useSession } from "next-auth/react"
 
 export default function Home() {
+	const { data: session } = useSession()
+
 	return (
 		<>
 			<Head>
@@ -9,7 +12,16 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			{/* <h1 className="text-3xl font-bold ">ホーム</h1> */}
+			<h1 className="text-3xl font-bold ">ホーム</h1>
+			{session ?? <div>ようこそ{session}</div>}
 		</>
 	)
+
+	// const Login = ({ user }) => {
+	// 	return (
+	// 		<>
+	// 			<div></div>
+	// 		</>
+	// 	)
+	// }
 }

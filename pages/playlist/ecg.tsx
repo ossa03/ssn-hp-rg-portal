@@ -16,6 +16,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 	const res = await fetch(`${YOUTUBE_PLAYLIST_ITEMS_API}&part=snippet&playlistId=${YOUTUBE_PLAYLIST_ID}`)
 	const data = await res.json()
 
+	// debug
 	console.log({ data: data.items })
 	if (!data) {
 		return {

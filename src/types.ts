@@ -1,3 +1,8 @@
+export interface User {
+	email: string
+	name: string
+}
+
 export interface ResourceId {
 	kind: string
 	videoId: string

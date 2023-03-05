@@ -5,7 +5,7 @@ import Tooltip from "./tooltip"
 type Props = {
 	title: string
 	Icon: IconType
-	rest?: string
+	// rest?: string
 }
 
 const HeaderIcon: FC<Props> = ({ Icon, title, ...rest }) => {
