@@ -45,12 +45,13 @@ const ManualList: FC = ({ data }: any) => {
 	const [searchQuery, setSearchQuery] = useState(data)
 
 	const handleSearch = () => {
-		const value = inputRef.current?.value
+		const value = inputRef.current?.value.toLowerCase()
 		console.log(value)
 
 		// フィルタリング機能
 		if (typeof value === "string") {
-			setSearchQuery(data.filter((item: Data) => item.fileName.toLowerCase().trim().includes(value)))
+			const filteredSearchQuery = data.filter((item: Data) => item.fileName.toLowerCase().trim().includes(value))
+			setSearchQuery(filteredSearchQuery)
 		}
 		// debug
 		console.log(searchQuery)
