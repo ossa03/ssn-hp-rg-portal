@@ -6,11 +6,12 @@ import { GetStaticProps } from "next"
 import { Snippet } from "../../src/types"
 import PlaylistItem from "../../src/components/playlistItem"
 import Title from "../../src/components/uiItem/title"
+import { useSession } from "next-auth/react"
 
 // fetch
 export const getStaticProps: GetStaticProps = async (context) => {
 	const MAX_RESULTS = 30 // Max50
-	const YOUTUBE_PLAYLIST_ITEMS_API = `https://www.googleapis.com/youtube/v3/playlistItems?key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}&maxResults=${MAX_RESULTS}`
+	const YOUTUBE_PLAYLIST_ITEMS_API = `https://www.googleapis.com/youtube/v3/playlistItems?key=${process.env.YOUTUBE_API_KEY}&maxResults=${MAX_RESULTS}`
 	// TODO 表示したいプレイリストIDを用意する↓
 	const YOUTUBE_PLAYLIST_ID = "PLfABn2oMIjDQsaZuQVAvI2EwUsIMvd2nN"
 
@@ -35,6 +36,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
 const Abl: FC = ({ data }: any) => {
 	// debuglog
 	console.log(data)
+
+	const { data: session } = useSession()
+
 	return (
 		<>
 			<Head>
@@ -42,15 +46,16 @@ const Abl: FC = ({ data }: any) => {
 			</Head>
 
 			<Title title="アブレーション動画" />
+			{session && (
+				<div className="flex flex-wrap items-start justify-start min-h-screen">
+					{data.items.map((item: any) => {
+						const snippet: Snippet = item.snippet
+						const { videoId } = snippet.resourceId
 
-			<div className="flex flex-wrap items-start justify-start min-h-screen">
-				{data.items.map((item: any) => {
-					const snippet: Snippet = item.snippet
-					const { videoId } = snippet.resourceId
-
-					return <PlaylistItem key={videoId} snippet={snippet} />
-				})}
-			</div>
+						return <PlaylistItem key={videoId} snippet={snippet} />
+					})}
+				</div>
+			)}
 		</>
 	)
 }

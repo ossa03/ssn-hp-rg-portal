@@ -1,8 +1,12 @@
 import Head from "next/head"
-import { useSession } from "next-auth/react"
+import { signOut, useSession } from "next-auth/react"
+import Login from "../src/components/login"
+import Home from "../src/components/home"
 
-export default function Home() {
+export default function Index() {
 	const { data: session } = useSession()
+
+	console.log(session)
 
 	return (
 		<>
@@ -12,16 +16,13 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<h1 className="text-3xl font-bold ">ホーム</h1>
-			{session ?? <div>ようこそ{session}</div>}
+			{!session ? (
+				<Login />
+			) : (
+				<>
+					<Home user={session?.user} />
+				</>
+			)}
 		</>
 	)
-
-	// const Login = ({ user }) => {
-	// 	return (
-	// 		<>
-	// 			<div></div>
-	// 		</>
-	// 	)
-	// }
 }

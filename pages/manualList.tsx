@@ -11,8 +11,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
 		"https://script.google.com/macros/s/AKfycbzD5pz5Vd-355SR7-6toSASjiP-uOtxampW-dze_pS3XxHjODGSVYM1cFzoxFj4I15PbA/exec"
 	const data = await axios(GOOGLE_DRIVE_API_DEMO, { headers: { "User-Agent": "*" } })
 
-	console.log("STATUS:  ", data.status)
-	console.log("Res::::::::::::::::::::::: ", data.data)
+	// debug
+	console.log("STATUS:::  ", data.status)
+	console.log("Response:::  ", data.data)
 
 	if (!data) {
 		return {
@@ -36,27 +37,24 @@ type Data = {
 	updatedAt: string // or Date or GoogleAppsScript.Base.Date
 }
 
-// TODO マニュアルのファイルをgoogle driveに保存しといてリンクを貼る
+// google driveに保存してあるマニュアルのファイルのリンクを貼る．APIはGASせ書いてる．
 const ManualList: FC = ({ data }: any) => {
 	// debug
-	console.log("DATA:::::::::::::\n", data)
+	// console.log("DATA:::\n", data)
 
 	const inputRef = useRef<HTMLInputElement>(null)
 	const [searchQuery, setSearchQuery] = useState(data)
 
 	const handleSearch = () => {
 		const value = inputRef.current?.value.toLowerCase()
-		console.log(value)
+		// debug
+		// console.log(value)
 
 		// フィルタリング機能
 		if (typeof value === "string") {
 			const filteredSearchQuery = data.filter((item: Data) => item.fileName.toLowerCase().trim().includes(value))
 			setSearchQuery(filteredSearchQuery)
 		}
-		// debug
-		console.log(searchQuery)
-		console.log(data.length)
-		console.log(searchQuery.length)
 	}
 
 	return (

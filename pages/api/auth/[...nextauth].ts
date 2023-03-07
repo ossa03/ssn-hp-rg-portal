@@ -1,5 +1,6 @@
 import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
+import FacebookProvider from "next-auth/providers/facebook"
 import { NextApiRequest, NextApiResponse } from "next"
 
 interface Credentials {
@@ -16,6 +17,10 @@ const credentials: CredentialsMap = {
 		client_id: process.env.GOOGLE_CLIENT_ID!,
 		client_secret: process.env.GOOGLE_CLIENT_SECRET!,
 	},
+	facebook: {
+		client_id: process.env.FACEBOOK_CLIENT_ID!,
+		client_secret: process.env.FACEBOOK_CLIENT_SECRET!,
+	},
 }
 
 export default NextAuth({
@@ -23,6 +28,10 @@ export default NextAuth({
 		GoogleProvider({
 			clientId: credentials.google.client_id,
 			clientSecret: credentials.google.client_secret,
+		}),
+		FacebookProvider({
+			clientId: credentials.facebook.client_id,
+			clientSecret: credentials.facebook.client_secret,
 		}),
 	],
 })
