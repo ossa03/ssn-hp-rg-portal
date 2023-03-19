@@ -33,6 +33,16 @@ export interface Snippet {
 	videoOwnerChannelTitle: string
 }
 
-export interface RootObject {
+export interface Item {
+	etag: string
+	id: string
+	kind: string
 	snippet: Snippet
+}
+
+export interface RootObject {
+	etag: string
+	items: Item
+	kind: string
+	nextPageToken: string
 }
