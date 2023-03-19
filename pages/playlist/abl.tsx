@@ -75,11 +75,10 @@ const Abl: FC = ({ data }: any) => {
 				</div>
 			</div>
 
-			<div className="flex flex-wrap items-start justify-start min-h-screen">
+			<div className="flex flex-wrap justify-center min-h-screen">
 				{searchQuery.map((item: Item) => {
 					const snippet: Snippet = item.snippet
 					const { videoId } = snippet.resourceId
-
 					return <PlaylistItem key={videoId} snippet={snippet} />
 				})}
 			</div>
