@@ -66,7 +66,7 @@ const ManualList: FC = ({ data }: any) => {
 
 			<Title title="マニュアル一覧" />
 
-			<div className="flex items-center justify-center w-full">
+			<div className="flex items-center justify-center w-full border">
 				<label htmlFor="search" className="text-xl text-gray-800 ">
 					検索 :
 				</label>
@@ -82,7 +82,7 @@ const ManualList: FC = ({ data }: any) => {
 				</div>
 			</div>
 
-			<div className="flex flex-wrap items-start justify-start min-h-screen">
+			<div className="flex flex-wrap items-start justify-center min-h-screen">
 				{searchQuery.map((item: Data) => {
 					const { id, createdAt, updatedAt, fileName, fileUrl } = item
 					// fileUrlは編集モードになっているので、previewモードに変更する．

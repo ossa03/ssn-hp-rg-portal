@@ -17,7 +17,7 @@ const ManualListItem: FC<Props> = ({ fileName = "マニュアルタイトル", f
 	return (
 		<>
 			<NextLink href={fileUrl}>
-				<a className="w-full px-4 py-4" target="_blank">
+				<a className="w-full px-4 py-4 lg:max-w-4xl" target="_blank">
 					<div className="items-stretch justify-between p-4 transition-all bg-gray-800 rounded-md text-gray-50 hover:opacity-90">
 						<h3 className="w-full mb-4 text-xl">{fileName}</h3>
 						<div className="flex justify-start space-x-4 text-xs text-gray-300">
