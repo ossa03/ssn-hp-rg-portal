@@ -5,6 +5,7 @@ import { GetStaticProps } from "next"
 
 import { Snippet } from "../../src/types"
 import PlaylistItem from "../../src/components/playlistItem"
+import Title from "../../src/components/title"
 
 // fetch
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -39,7 +40,7 @@ const Abl: FC = ({ data }: any) => {
 			<Head>
 				<title>アブレーション動画</title>
 			</Head>
-			<div>アブレーション動画</div>
+			<Title title="アブレーション動画" />
 			<div className="flex flex-wrap items-start justify-start min-h-screen">
 				{data.items.map((item: any) => {
 					const snippet: Snippet = item.snippet

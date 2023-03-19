@@ -3,6 +3,7 @@ import { GetStaticProps } from "next"
 import Head from "next/head"
 import { FC, useRef, useState } from "react"
 import ManualListItem from "../src/components/manualListItem"
+import Title from "../src/components/title"
 
 // fetch
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -63,7 +64,7 @@ const ManualList: FC = ({ data }: any) => {
 				<title>マニュアル一覧</title>
 			</Head>
 
-			<div>マニュアル一覧</div>
+			<Title title="マニュアル一覧" />
 
 			<div className="flex items-center justify-center w-full">
 				<label htmlFor="search" className="text-xl text-gray-800 ">
