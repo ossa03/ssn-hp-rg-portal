@@ -9,7 +9,7 @@ import PlaylistItem from "../../src/components/playlistItem"
 // fetch
 export const getStaticProps: GetStaticProps = async (context) => {
 	const MAX_RESULTS = 50 // Max50
-	const YOUTUBE_PLAYLIST_ITEMS_API = `https://www.googleapis.com/youtube/v3/playlistItems?key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}&maxResults=${MAX_RESULTS}`
+	const YOUTUBE_PLAYLIST_ITEMS_API = `https://www.googleapis.com/youtube/v3/playlistItems?key=${process.env.YOUTUBE_API_KEY}&maxResults=${MAX_RESULTS}`
 	// TODO 表示したいプレイリストIDを用意する↓
 	const YOUTUBE_PLAYLIST_ID = "PLfABn2oMIjDT1b1C7n-cNp5cj03d9fXMt"
 
