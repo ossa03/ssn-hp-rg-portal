@@ -44,7 +44,7 @@ const ManualList: FC = ({ data }: any) => {
 	const [searchQuery, setSearchQuery] = useState(data)
 
 	const handleSearch = () => {
-		const value = inputRef.current?.value
+		const value = inputRef.current?.value.toLowerCase().trim()
 		console.log(value)
 
 		// フィルタリング機能
