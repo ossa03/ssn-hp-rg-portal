@@ -66,7 +66,7 @@ const ManualList: FC = ({ data }: any) => {
 
 			<Title title="マニュアル一覧" />
 
-			<div className="flex items-center justify-center w-full border">
+			<div className="flex items-center justify-center w-full">
 				<label htmlFor="search" className="text-xl text-gray-800 ">
 					検索 :
 				</label>
